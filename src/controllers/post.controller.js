@@ -32,7 +32,9 @@ const getPost = catchAsync(async (req, res) => {
 });
 
 const updatePost = catchAsync(async (req, res) => {
-  const post = await postService.updatePostById(req.params.postId, req.body);
+  let data = req.body
+  data.desc = req.EditorJsBody
+  const post = await postService.updatePostById(req.params.postId, data);
   await categoryService.updateNumberOfPosts(req.body.category)
   res.send(post);
 });

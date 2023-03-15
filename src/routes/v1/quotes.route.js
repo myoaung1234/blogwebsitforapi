@@ -10,7 +10,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('createQuotess'), validate(quotesValidation.createQuotes) ,quotesController.createQuotes)
+  .post(auth('createQuotes'), validate(quotesValidation.createQuotes) ,quotesController.createQuotes)
   .get(auth('getQuotess'),validate(quotesValidation.getQuotess), quotesController.getQuotess);
 
 router

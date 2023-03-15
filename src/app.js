@@ -33,8 +33,12 @@ app.use(express.urlencoded({ extended: true }));
 // sanitize request data
 app.use((req, res, next) => {
   if (req.body.desc) req.EditorJsBody = req.body.desc;
+  if (req.body.desc) {
+    console.log(req.body.desc)
+  }
   next();
 });
+
 app.use(xss());
 app.use(mongoSanitize());
 
@@ -54,9 +58,6 @@ if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
 
-app.use( '/', (req, res) => {
-  return res.send("Hello!")
-} )
 // v1 api routes
 app.use('/v1', routes);
 

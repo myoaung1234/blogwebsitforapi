@@ -6,7 +6,8 @@ const { quotesService } = require('../services');
 
 
 const createQuotes = catchAsync(async (req, res) => {
-  const quotes = await quotesService.createQuotes(req.body);
+  let formData = req.body
+  const quotes = await quotesService.createQuotes(formData);
   res.status(httpStatus.CREATED).send(quotes);
 });
 
@@ -27,7 +28,9 @@ const getQuotes = catchAsync(async (req, res) => {
 });
 
 const updateQuotes = catchAsync(async (req, res) => {
-  const quotes = await quotesService.updateQuotesById(req.params.quotesId, req.body);
+  let data = req.body
+  data.quotes = req.EditorJsBody
+  const quotes = await quotesService.updateQuotesById(req.params.quotesId, data);
   res.send(quotes);
 });
 

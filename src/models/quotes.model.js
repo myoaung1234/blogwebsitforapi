@@ -10,7 +10,7 @@ const quotesSchema = mongoose.Schema(
 
     quotes: {
       type: String,
-      required: true
+      
     }
   },
   {

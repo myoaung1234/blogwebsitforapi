@@ -36,6 +36,15 @@ const getPostById = async (id) => {
 };
 
 /**
+ * Get post by id
+ * @param {ObjectId} id
+ * @returns {Promise<Post>}
+ */
+const getPostByIdFormAdmin = async (id) => {
+  return Post.findById(id);
+};
+
+/**
  * Update post by id
  * @param {ObjectId} postId
  * @param {Object} updateBody
@@ -72,5 +81,6 @@ module.exports = {
   queryPosts,
   getPostById,
   updatePostById,
-  deletePostById
+  deletePostById,
+  getPostByIdFormAdmin
 };

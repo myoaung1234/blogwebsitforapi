@@ -31,6 +31,14 @@ const getPost = catchAsync(async (req, res) => {
   res.send(update);
 });
 
+const getPostForAdmin = catchAsync(async (req, res) => {
+  const post = await postService.getPostByIdFormAdmin(req.params.postId);
+  if (!post) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Post not found !!');
+  }
+  res.send(post)
+});
+
 const updatePost = catchAsync(async (req, res) => {
   let data = req.body
   data.desc = req.EditorJsBody
@@ -55,5 +63,6 @@ module.exports = {
   getPosts,
   getPost,
   updatePost,
-  deletePost
+  deletePost,
+  getPostForAdmin
  };

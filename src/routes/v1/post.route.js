@@ -15,7 +15,7 @@ router
 
 router
   .route('/:postId')
-  .get(auth('getPost'),validate(postValidation.getPost), postController.getPost)
+  .get(auth('getPost'),validate(postValidation.getPost), postController.getPostForAdmin)
   .patch(auth('managePosts'), validate(postValidation.updatePost), postController.updatePost)
   .delete(auth('managePosts'),validate(postValidation.deletePost), postController.deletePost)
 
